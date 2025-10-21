@@ -201,13 +201,13 @@ async function sadisappointedGesture() {
       },
       {
         //Holding the gesture for a bit to add emotional weight
-        time: [2.0],
+        time: [5.0],
         persist: true,
         params: {},
       },
       {
         //Reset to neutral
-        time: [2.8],
+        time: [4.0],
         persist: false,
         params: { reset: true },
       },
@@ -249,7 +249,7 @@ const dmMachine = setup({
       return fhVoice("en-US-EchoMultilingualNeural");
     }),
     fhHello: fromPromise<any, null>(async () => {
-      return fhSay("Hiii! How's it go...");
+      return fhSay("Hiii! How's it going?");
     }),
     fhL: fromPromise<any, null>(async () => {
      return fhListen();
@@ -265,14 +265,17 @@ const dmMachine = setup({
     }),
     fhOMG: fromPromise<any, null>(async () => {
       return Promise.all([
-        fhSay("Oh. My. God. Did you eat it?"),
+        fhSay("Oh my god! Did you eat it?"),
         omgGesture()
       ])
     }),
     fhSadisappointed: fromPromise<any, null>(async () => {
       return Promise.all([
         //fhSound(`https://github.com/guscarrian/xstate-furhat-starter/raw/refs/heads/lab3/src/sad_violin.wav`),
-        fhSound(`https://raw.githubusercontent.com/guscarrian/xstate-furhat-starter/lab3/src/sad_violin.wav`),
+        //fhSound(`https://raw.githubusercontent.com/guscarrian/xstate-furhat-starter/lab3/src/sad_violin.wav`),
+        fhSound(`https://raw.githubusercontent.com/guscarrian/xstate-furhat-starter/lab3/src/SadViolin.wav`),
+
+        //https://github.dev/guscarrian/xstate-furhat-starter/blob/588bd84a4a0b78e2e14fa8d9499ab96c5fd1e9bc/src/SadViolin.wav
         sadisappointedGesture()
       ])
     }),
