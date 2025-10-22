@@ -6,13 +6,13 @@ For the first part of the lab, I created two new gestures; **confusedGesture** a
 
 Next, I defined two functions, **fhGetUser** and **fhAttend**, to get and attend the user respectively. I initially only added the fhAttend function, which did not work since we also need to get the user first. This part was a bit challenging and the help of our TA Viktoria was crucial to get it right.
 
-The reason why I chose to create the confused and OMG gestures was mainly because I wanted them to fit into the demonstration dialogue (part A3), which is described below. Similarly, I introduced a third gesture, **sadisappointedGesture**, that is perfomed together with an audio sound (dramatic piano). To handle the audio sound, the **fhSound** function was created. The sadisappointedGesture is the result of combining sadness and disappointment, which I believe is what we need in a situation like this:
+The reason why I chose to create the confused and OMG gestures was mainly because I wanted them to fit into the demonstration dialogue (part A3), which is described below. Similarly, I introduced a third gesture, **sadisappointedGesture**, that is perfomed together with an audio sound (sad violin). To handle the audio sound, the **fhSound** function was created. The sadisappointedGesture is the result of combining sadness and disappointment, which I believe is what we need in a situation like this:
 
-Furhat > Hi! How's it going?
-Furhat > Wait, where's the cinnamon bun I just left here? (*confused*)
-Furhat > OMG! Did you eat it? (*OMG*)
-User   > Whoopsies, I did... (imaginary user input)
-Furhat > * Dramatic piano * (*sad/disappointed*)
+Furhat > Hi! How's it going?<br>
+Furhat > Wait, where's the cinnamon bun I just left here? (*confused*)<br>
+Furhat > OMG! Did you eat it? (*OMG*)<br>
+User   > Whoopsies, I did... (imaginary user input)<br>
+Furhat > * Sad violin * (*sad/disappointed*)<br>
 
 The machine flow is as follows:
 Start > Next > GetUser > Attend > Confused > DramaticPause > OMG > Listen > SaDisappointed > End
