@@ -271,11 +271,7 @@ const dmMachine = setup({
     }),
     fhSadisappointed: fromPromise<any, null>(async () => {
       return Promise.all([
-        //fhSound(`https://github.com/guscarrian/xstate-furhat-starter/raw/refs/heads/lab3/src/sad_violin.wav`),
-        //fhSound(`https://raw.githubusercontent.com/guscarrian/xstate-furhat-starter/lab3/src/sad_violin.wav`),
         fhSound(`https://raw.githubusercontent.com/guscarrian/xstate-furhat-starter/lab3/src/SadViolin.wav`),
-
-        //https://github.dev/guscarrian/xstate-furhat-starter/blob/588bd84a4a0b78e2e14fa8d9499ab96c5fd1e9bc/src/SadViolin.wav
         sadisappointedGesture()
       ])
     }),
@@ -416,7 +412,10 @@ const dmMachine = setup({
         },
       },
     },
-    End: {},
+    End: {
+      entry: ({ event }) => console.log("You broke Furhat's robotic heart. End of the conversation.", event.output),
+      type: "final",
+    },
   },
 });
 
