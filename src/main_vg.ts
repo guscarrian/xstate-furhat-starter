@@ -205,7 +205,6 @@ async function DoubleNod() {
 async function Kissing() {
   const myHeaders = new Headers();
   myHeaders.append("accept", "application/json");
-
   return fetch(`http://${FURHATURI}/furhat/gesture?blocking=false`, {
     method: "POST",
     headers: myHeaders,
@@ -217,10 +216,8 @@ async function Kissing() {
         persist: true,
         params: {
           SMILE_CLOSED: 0.4,  // closes corners of mouth slightly (U shape)
-          //"SMILE_OPEN": 0.0,    // no open smile
           PHONE_B_M_P: 0.3,
           PHONE_W: 0.5,
-          //PHONE_OH: 0.3,
           PHONE_OOH_Q: 1.0,
           BROW_UP_LEFT: 0.1,  // subtle facial liveliness
           BROW_UP_RIGHT: 0.1,
@@ -296,9 +293,8 @@ const dmMachine = setup({
 
     fhKissing: fromPromise<any, null>(async () => {
       return Promise.all([
-        fhSay("Puss puss"),
+        fhSay("Puss puss"),        
         fhSound(`https://raw.githubusercontent.com/guscarrian/xstate-furhat-starter/lab3/src/kiss-sound-effect.wav`),
-        fhSay("Puss puss"),
         Kissing()
       ])
     }),
@@ -334,16 +330,6 @@ const dmMachine = setup({
       selectRandomGesture(); //running a random gesture in parallel
       return fhSay(input);
     }),
-
-    fhTestGesture: fromPromise<any, null>(async () => {
-      //return BigSmile()
-      //return Happy()
-      //return GazeAway()
-      //return DoubleNod()
-      return Kissing()
-      }),
-
-
   },
 }).createMachine({
   id: "root",
@@ -356,21 +342,6 @@ const dmMachine = setup({
   initial: "Start",
   states: {
     Start: { after: { 1000: "GetUser" } },
-    //Start: { after: { 1000: "Goodbye" } },
-    TestGesture: {
-      invoke: {
-        src: "fhTestGesture",
-        input: null,
-        onDone: {
-          target: "Start",
-          actions: ({ event }) => console.log(event.output),
-        },
-        onError: {
-          target: "Fail",
-          actions: ({ event }) => console.error(event),
-        }
-      },
-    },
     GetUser: {
       invoke: {
         src: "fhGetUser",
